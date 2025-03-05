@@ -86,7 +86,7 @@
         .transaction-item {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
 
@@ -98,6 +98,12 @@
         .transaction-date {
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
+        }
+
+        .transaction-amount {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #FFD700;
         }
 
         .error-popup {
@@ -196,25 +202,30 @@
         <!-- Real-time transactions (20 lines) -->
         <div class="transaction-item">
             <div class="transaction-id">TXN1234567890</div>
-            <div class="transaction-date">March 1, 2025</div>
+            <div class="transaction-date">March 5, 2025 - 09:34 AM</div>
+            <div class="transaction-amount">+$500.00</div>
         </div>
         <div class="transaction-item">
             <div class="transaction-id">TXN1234567891</div>
-            <div class="transaction-date">March 2, 2025</div>
+            <div class="transaction-date">March 4, 2025 - 04:12 PM</div>
+            <div class="transaction-amount">-$250.00</div>
         </div>
         <div class="transaction-item">
             <div class="transaction-id">TXN1234567892</div>
-            <div class="transaction-date">March 3, 2025</div>
+            <div class="transaction-date">March 3, 2025 - 01:30 PM</div>
+            <div class="transaction-amount">+$2,000.00</div>
         </div>
         <div class="transaction-item">
             <div class="transaction-id">TXN1234567893</div>
-            <div class="transaction-date">March 4, 2025</div>
+            <div class="transaction-date">March 2, 2025 - 10:47 AM</div>
+            <div class="transaction-amount">-$100.00</div>
         </div>
         <div class="transaction-item">
             <div class="transaction-id">TXN1234567894</div>
-            <div class="transaction-date">March 5, 2025</div>
+            <div class="transaction-date">March 1, 2025 - 11:15 AM</div>
+            <div class="transaction-amount">+$1,000.00</div>
         </div>
-        <!-- Repeat above blocks for 20 transactions -->
+        <!-- Repeat the above blocks for 20 transactions -->
     </div>
 
     <!-- Error Popup -->
