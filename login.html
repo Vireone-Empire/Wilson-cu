@@ -46,10 +46,10 @@
 
     <!-- Login Form -->
     <div class="login-box p-8 rounded-lg max-w-md w-full">
-        <form class="space-y-5">
+        <form id="loginForm" class="space-y-5">
             <div>
                 <label class="block text-sm font-semibold mb-1">USER ID</label>
-                <input type="text" class="w-full px-4 py-3 rounded-lg" placeholder="WCU-X9B7Q5">
+                <input type="text" id="userId" class="w-full px-4 py-3 rounded-lg" placeholder="Enter User ID" required>
                 <div class="mt-2 flex items-center">
                     <input type="checkbox" id="remember" class="mr-2">
                     <label for="remember" class="text-sm">Remember Me</label>
@@ -58,10 +58,10 @@
             
             <div>
                 <label class="block text-sm font-semibold mb-1">PASSWORD</label>
-                <input type="password" class="w-full px-4 py-3 rounded-lg" placeholder="Gv!3p@*zX#1">
+                <input type="password" id="password" class="w-full px-4 py-3 rounded-lg" placeholder="Enter Password" required>
             </div>
 
-            <button class="w-full login-btn text-white py-3 rounded-lg font-bold uppercase tracking-wider">
+            <button type="submit" class="w-full login-btn text-white py-3 rounded-lg font-bold uppercase tracking-wider">
                 LOG IN
             </button>
         </form>
@@ -86,5 +86,27 @@
             <p>Member FDIC</p>
         </div>
     </footer>
+
+    <!-- Login Authentication Script -->
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            // Hardcoded valid credentials
+            const validUserId = "WCU-X9B7Q5";
+            const validPassword = "Gv!3p@*zX#1";
+
+            // Get user input
+            const userId = document.getElementById("userId").value;
+            const password = document.getElementById("password").value;
+
+            // Check if credentials match
+            if (userId === validUserId && password === validPassword) {
+                window.location.href = "dashboard.html"; // Redirect to dashboard
+            } else {
+                alert("Invalid User ID or Password. Please try again.");
+            }
+        });
+    </script>
 </body>
 </html>
