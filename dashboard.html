@@ -13,7 +13,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
         
         body {
-            background: linear-gradient(to right, #2a2a72, #009FFD);
+            background: linear-gradient(to right, #005c97, #363795);
             font-family: 'Montserrat', sans-serif;
             color: white;
         }
@@ -27,19 +27,19 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .dashboard-box {
+        .login-box {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .action-btn {
+        .login-btn {
             background: linear-gradient(to right, #FFD700, #B8860B);
             transition: all 0.3s ease-in-out;
         }
 
-        .action-btn:hover {
+        .login-btn:hover {
             background: linear-gradient(to right, #B8860B, #FFD700);
             transform: scale(1.05);
         }
@@ -60,144 +60,118 @@
             background: rgba(255, 255, 255, 0.3);
         }
 
-        /* Error Popup Styles */
-        #errorPopup {
+        .transactions-table {
+            margin-top: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow-x: auto;
+            padding: 20px;
+        }
+
+        .modal {
+            display: none;
             position: fixed;
-            top: 0;
+            z-index: 50;
             left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.5);
-            display: flex;
             justify-content: center;
             align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
         }
 
-        .error-box {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 400px;
-            text-align: center;
-            color: #333;
-        }
-
-        .error-box h2 {
-            font-size: 18px;
-            font-weight: bold;
-            color: #D9534F;
-        }
-
-        .error-box p {
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-
-        .error-box button {
-            background-color: #D9534F;
+        .modal-content {
+            background: #1a1a1a;
             color: white;
-            padding: 8px 20px;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .modal-btn {
+            background: #FFD700;
+            color: #1a1a1a;
             border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
             border-radius: 5px;
             cursor: pointer;
-        }
-
-        .error-box button:hover {
-            background-color: #C9302C;
         }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen text-white p-6">
-    
-    <!-- Account Balance and User Info -->
-    <div class="dashboard-box text-white p-8 rounded-lg shadow-lg max-w-md w-full fade-in">
-        <h2 class="text-2xl font-bold text-center uppercase tracking-wide mb-4">Account Dashboard</h2>
 
-        <div class="text-center mb-6">
-            <h3 class="text-xl font-semibold">Account Balance</h3>
-            <p class="text-3xl font-bold mb-2">$750,000.03</p>
-            <p class="text-md font-medium text-gray-300">Account Owner: Wayne D Allen</p>
-            <p class="text-md font-medium text-gray-300">Account Number: 0896283891</p>
-        </div>
-        
-        <!-- Actions (buttons) -->
-        <div class="space-y-4">
-            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
-                Transfer
-            </button>
-            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
-                Withdraw
-            </button>
-            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
-                Cash Out
-            </button>
-            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
-                Donation
-            </button>
-            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
-                Refer & Earn
-            </button>
-            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
-                Safe Box
-            </button>
-            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
-                TV Subscription
-            </button>
-            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
-                Apply for Card
-            </button>
-            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
-                Loan
-            </button>
+    <!-- Account Balance and Info -->
+    <div class="max-w-4xl w-full p-6 bg-gradient-to-r from-indigo-800 to-indigo-500 rounded-lg shadow-lg">
+        <div class="flex justify-between items-center">
+            <h2 class="text-2xl font-bold">Account Overview</h2>
+            <p class="text-lg text-gray-200">Account Number: 0896283891</p>
         </div>
 
-        <!-- Transactions History -->
-        <div class="mt-8">
-            <h3 class="text-xl font-semibold text-center">Transaction History</h3>
-            <table class="w-full mt-4">
-                <thead>
-                    <tr>
-                        <th class="text-left">Transaction ID</th>
-                        <th class="text-left">Date</th>
-                        <th class="text-left">Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Transaction rows -->
-                    <tr><td>TX12345678</td><td>2025-03-05 12:34:56</td><td>$1,000.00</td></tr>
-                    <tr><td>TX12345679</td><td>2025-03-04 11:22:30</td><td>$500.00</td></tr>
-                    <tr><td>TX12345680</td><td>2025-03-03 10:13:15</td><td>$2,000.00</td></tr>
-                    <tr><td>TX12345681</td><td>2025-03-02 09:45:00</td><td>$300.00</td></tr>
-                    <tr><td>TX12345682</td><td>2025-03-01 08:30:40</td><td>$750.00</td></tr>
-                    <tr><td>TX12345683</td><td>2025-02-28 07:20:55</td><td>$1,500.00</td></tr>
-                    <tr><td>TX12345684</td><td>2025-02-27 06:10:20</td><td>$450.00</td></tr>
-                    <tr><td>TX12345685</td><td>2025-02-26 05:00:10</td><td>$700.00</td></tr>
-                    <tr><td>TX12345686</td><td>2025-02-25 03:50:45</td><td>$350.00</td></tr>
-                    <tr><td>TX12345687</td><td>2025-02-24 02:40:35</td><td>$600.00</td></tr>
-                    <tr><td>TX12345688</td><td>2025-02-23 01:30:25</td><td>$1,200.00</td></tr>
-                    <tr><td>TX12345689</td><td>2025-02-22 00:20:15</td><td>$450.00</td></tr>
-                    <tr><td>TX12345690</td><td>2025-02-21 23:10:05</td><td>$350.00</td></tr>
-                    <tr><td>TX12345691</td><td>2025-02-20 22:00:00</td><td>$900.00</td></tr>
-                    <tr><td>TX12345692</td><td>2025-02-19 21:50:45</td><td>$1,000.00</td></tr>
-                    <tr><td>TX12345693</td><td>2025-02-18 20:40:35</td><td>$200.00</td></tr>
-                    <tr><td>TX12345694</td><td>2025-02-17 19:30:25</td><td>$650.00</td></tr>
-                    <tr><td>TX12345695</td><td>2025-02-16 18:20:15</td><td>$1,500.00</td></tr>
-                    <tr><td>TX12345696</td><td>2025-02-15 17:10:05</td><td>$500.00</td></tr>
-                    <tr><td>TX12345697</td><td>2025-02-14 16:00:00</td><td>$700.00</td></tr>
-                </tbody>
-            </table>
-            <div class="text-center mt-4">
-                <button class="action-btn py-2 px-6 text-gray-900 rounded-full">Past Transactions</button>
-            </div>
+        <div class="mt-4">
+            <p class="text-3xl font-bold">Account Balance: $750,000.03</p>
+            <p class="text-xl mt-2">Owner: Wayne D Allen</p>
         </div>
     </div>
 
-    <!-- Error Popup -->
-    <div id="errorPopup">
-        <div class="error-box">
-            <h2>This action cannot be processed</h2>
+    <!-- Quick Action Buttons -->
+    <div class="mt-8 w-full max-w-4xl p-6 grid grid-cols-3 gap-4">
+        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Transfer</button>
+        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Withdraw</button>
+        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Cash Out</button>
+        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Donation</button>
+        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Refer & Earn</button>
+        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Safe Box</button>
+        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">TV Subscription</button>
+        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Apply for Card</button>
+        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Loan</button>
+    </div>
+
+    <!-- Transaction History -->
+    <div class="transactions-table">
+        <h3 class="text-2xl font-bold mb-4">Recent Transactions</h3>
+        <table class="w-full table-auto text-gray-200">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4">Transaction ID</th>
+                    <th class="py-2 px-4">Date & Time</th>
+                    <th class="py-2 px-4">Amount</th>
+                    <th class="py-2 px-4">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example transaction rows, replace with actual data -->
+                <tr><td class="py-2 px-4">TXN001</td><td class="py-2 px-4">2025-03-05 10:00:00</td><td class="py-2 px-4">$1,000.00</td><td class="py-2 px-4">Completed</td></tr>
+                <tr><td class="py-2 px-4">TXN002</td><td class="py-2 px-4">2025-03-05 10:05:00</td><td class="py-2 px-4">$500.00</td><td class="py-2 px-4">Completed</td></tr>
+                <tr><td class="py-2 px-4">TXN003</td><td class="py-2 px-4">2025-03-05 10:10:00</td><td class="py-2 px-4">$2,000.00</td><td class="py-2 px-4">Pending</td></tr>
+                <!-- Add 17 more rows as needed -->
+            </tbody>
+        </table>
+
+        <button class="bg-gradient-to-r from-indigo-600 to-indigo-800 text-white p-3 rounded-lg mt-4">Past Transactions</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content text-center">
+            <h3 class="text-xl font-bold text-yellow-500">This action cannot be processed</h3>
             <p>Please contact your bank for further assistance.</p>
-    
+            <button class="modal-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Show the modal on page click
+        document.body.addEventListener('click', function() {
+            document.getElementById('modal').style.display = 'flex';
+        });
+
+        // Close the modal
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
