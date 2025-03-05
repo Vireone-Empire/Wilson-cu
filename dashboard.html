@@ -29,7 +29,7 @@
 
         .segment {
             background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+            padding: 16px;
             border-radius: 10px;
             transition: transform 0.3s, background-color 0.3s;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
@@ -41,7 +41,7 @@
         }
 
         .segment-text {
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 600;
             text-align: center;
             color: #FFD700;
@@ -49,7 +49,7 @@
 
         .account-info {
             background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+            padding: 16px;
             border-radius: 10px;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
             width: 100%;
@@ -57,40 +57,47 @@
         }
 
         .account-name {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: #FFD700;
         }
 
         .account-number {
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 400;
             color: rgba(255, 255, 255, 0.8);
         }
 
         .account-balance {
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: #FFD700;
         }
 
         .transaction-history {
             margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
         }
 
         .transaction-item {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
+            padding: 8px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .transaction-id {
             color: #FFD700;
+            font-size: 0.9rem;
         }
 
         .transaction-date {
             color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
         }
 
         .error-popup {
@@ -116,13 +123,13 @@
         }
 
         .error-message {
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 600;
             color: #FFD700;
         }
 
         .error-details {
-            font-size: 1rem;
+            font-size: 0.875rem;
             color: rgba(255, 255, 255, 0.8);
         }
 
@@ -150,31 +157,6 @@
         <div class="account-name">Wayne D Allen</div>
         <div class="account-number">Account Number: 0896283891</div>
         <div class="account-balance">$750,000.03</div>
-        <div class="transaction-history">
-            <h3 class="text-xl font-bold text-yellow-400 mb-4">Transaction History</h3>
-            <!-- Real-time transactions (30 lines) -->
-            <div class="transaction-item">
-                <div class="transaction-id">TXN1234567890</div>
-                <div class="transaction-date">March 1, 2025</div>
-            </div>
-            <div class="transaction-item">
-                <div class="transaction-id">TXN1234567891</div>
-                <div class="transaction-date">March 2, 2025</div>
-            </div>
-            <div class="transaction-item">
-                <div class="transaction-id">TXN1234567892</div>
-                <div class="transaction-date">March 3, 2025</div>
-            </div>
-            <div class="transaction-item">
-                <div class="transaction-id">TXN1234567893</div>
-                <div class="transaction-date">March 4, 2025</div>
-            </div>
-            <div class="transaction-item">
-                <div class="transaction-id">TXN1234567894</div>
-                <div class="transaction-date">March 5, 2025</div>
-            </div>
-            <!-- Repeat above blocks for 30 transactions -->
-        </div>
     </div>
 
     <!-- Dashboard Segments -->
@@ -206,6 +188,33 @@
         <div class="segment cursor-pointer" onclick="showError()">
             <div class="segment-text">Loan</div>
         </div>
+    </div>
+
+    <!-- Transaction History -->
+    <div class="transaction-history text-white fade-in">
+        <h3 class="text-xl font-bold text-yellow-400 mb-4">Transaction History</h3>
+        <!-- Real-time transactions (20 lines) -->
+        <div class="transaction-item">
+            <div class="transaction-id">TXN1234567890</div>
+            <div class="transaction-date">March 1, 2025</div>
+        </div>
+        <div class="transaction-item">
+            <div class="transaction-id">TXN1234567891</div>
+            <div class="transaction-date">March 2, 2025</div>
+        </div>
+        <div class="transaction-item">
+            <div class="transaction-id">TXN1234567892</div>
+            <div class="transaction-date">March 3, 2025</div>
+        </div>
+        <div class="transaction-item">
+            <div class="transaction-id">TXN1234567893</div>
+            <div class="transaction-date">March 4, 2025</div>
+        </div>
+        <div class="transaction-item">
+            <div class="transaction-id">TXN1234567894</div>
+            <div class="transaction-date">March 5, 2025</div>
+        </div>
+        <!-- Repeat above blocks for 20 transactions -->
     </div>
 
     <!-- Error Popup -->
