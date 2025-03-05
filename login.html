@@ -12,89 +12,113 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
+            background: #f4f4f4;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .header {
+            background: #002147;
             color: white;
-            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-        }
-        .section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
             padding: 20px;
-            margin-bottom: 20px;
+            text-align: center;
         }
-        .login-box {
-            background: rgba(255, 255, 255, 0.1);
+        .slider-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        .slider {
+            display: flex;
+            animation: slide 15s linear infinite;
+        }
+        .slide {
+            min-width: 100%;
+            text-align: center;
             padding: 20px;
-            border-radius: 10px;
-            display: none;
+            background: #003366;
+            color: white;
+            font-size: 1.2rem;
+        }
+        @keyframes slide {
+            0% { transform: translateX(0%); }
+            33% { transform: translateX(-100%); }
+            66% { transform: translateX(-200%); }
+            100% { transform: translateX(0%); }
+        }
+        .animate-fade {
+            animation: fadeIn 1.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
-<body class="p-6">
-    
-    <!-- Welcome Section -->
-    <section class="text-center mb-8">
-        <h1 class="text-4xl font-bold">WELCOME TO WILSON CREDIT UNION</h1>
-        <p class="text-lg mt-2">Your trusted partner for financial growth</p>
-    </section>
-    
-    <div class="max-w-6xl mx-auto space-y-6">
-        <!-- Login Button -->
-        <div class="text-center">
-            <button id="loginToggle" class="bg-blue-600 px-6 py-3 rounded-md font-bold text-lg">Secure Login</button>
-        </div>
+<body>
+    <header class="header animate-fade">
+        <h1 class="text-3xl font-bold">Wilson Credit Union</h1>
+        <p class="text-lg">Your Trusted Financial Partner</p>
+    </header>
 
-        <!-- Login Form (Initially Hidden) -->
-        <div id="loginBox" class="login-box max-w-md mx-auto mt-4">
-            <h2 class="text-xl font-bold mb-4">Secure Login</h2>
-            <form id="loginForm" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-semibold">USER ID</label>
-                    <input type="text" id="userId" class="w-full px-3 py-2 rounded-md bg-gray-800 text-white" placeholder="Enter User ID" required>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold">PASSWORD</label>
-                    <input type="password" id="password" class="w-full px-3 py-2 rounded-md bg-gray-800 text-white" placeholder="Enter Password" required>
-                </div>
-                <button type="submit" class="w-full bg-blue-600 py-2 rounded-md font-bold">LOG IN</button>
-            </form>
+    <!-- Slider -->
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide">Low-interest home and auto loans available now!</div>
+            <div class="slide">Exclusive credit card rewards – Earn while you spend!</div>
+            <div class="slide">Plan your future with our retirement savings plans.</div>
         </div>
-        
-        <!-- Main Content -->
-        <main class="space-y-6">
-            <section class="section">
-                <h2 class="text-2xl font-bold">Banking Products & Services</h2>
-                <ul class="list-disc pl-5 mt-2 text-sm">
-                    <li>Personal & Business Loans</li>
-                    <li>Credit Cards with Cashback Rewards</li>
-                    <li>Auto & Home Loans</li>
-                    <li>Investment & Retirement Planning</li>
-                    <li>Insurance Services</li>
-                </ul>
-            </section>
-            
-            <section class="section">
-                <h2 class="text-2xl font-bold">Financial News & Updates</h2>
-                <p class="mt-2 text-sm">Stay informed with the latest financial news and market trends.</p>
-                <ul class="list-disc pl-5 mt-2 text-sm">
-                    <li>The Federal Reserve announces interest rate changes.</li>
-                    <li>Tips on how to improve your credit score.</li>
-                    <li>Investment trends for 2025.</li>
-                </ul>
-            </section>
-            
-            <section class="section">
-                <h2 class="text-2xl font-bold">Current Promotions</h2>
-                <ul class="list-disc pl-5 mt-2 text-sm">
-                    <li>Get a $200 bonus when opening a new checking account.</li>
-                    <li>0% APR on balance transfers for the first 12 months.</li>
-                    <li>Low-interest auto loan special.</li>
-                </ul>
-            </section>
-        </main>
     </div>
 
-    <footer class="mt-8 text-center text-sm w-full">
+    <div class="container animate-fade mt-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Login Section -->
+            <aside class="bg-white p-6 rounded-lg shadow-lg">
+                <button id="loginToggle" class="w-full bg-blue-600 text-white py-2 rounded-md font-bold text-lg">Secure Login</button>
+                <div id="loginBox" class="hidden mt-4">
+                    <h2 class="text-xl font-bold mb-4">Secure Login</h2>
+                    <form id="loginForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold">USER ID</label>
+                            <input type="text" class="w-full px-3 py-2 rounded-md border border-gray-300" placeholder="Enter User ID" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold">PASSWORD</label>
+                            <input type="password" class="w-full px-3 py-2 rounded-md border border-gray-300" placeholder="Enter Password" required>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md font-bold">LOG IN</button>
+                    </form>
+                </div>
+            </aside>
+            
+            <!-- Banking Services -->
+            <section class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-4">Our Banking Services</h2>
+                <ul class="list-disc pl-5 text-lg">
+                    <li>Personal & Business Loans</li>
+                    <li>Credit Cards with Rewards</li>
+                    <li>Auto & Home Loans</li>
+                    <li>Investment & Retirement Planning</li>
+                    <li>Insurance & Wealth Management</li>
+                </ul>
+            </section>
+            
+            <!-- Special Offers -->
+            <section class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-4">Special Offers</h2>
+                <ul class="list-disc pl-5 text-lg">
+                    <li>0% APR on balance transfers for 12 months</li>
+                    <li>Free checking accounts with cashback rewards</li>
+                    <li>Low-interest mortgage rates – Apply now!</li>
+                    <li>Exclusive investment opportunities for members</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <footer class="mt-10 text-center text-sm text-gray-600">
         <p class="font-bold text-lg">Wilson Credit Union</p>
         <p>Member FDIC | Equal Housing Lender</p>
     </footer>
@@ -102,7 +126,7 @@
     <script>
         document.getElementById("loginToggle").addEventListener("click", function() {
             var loginBox = document.getElementById("loginBox");
-            loginBox.style.display = loginBox.style.display === "none" ? "block" : "none";
+            loginBox.classList.toggle("hidden");
         });
 
         document.getElementById("loginForm").addEventListener("submit", function(event) {
