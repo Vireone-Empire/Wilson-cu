@@ -7,34 +7,41 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background-color: #0f0f0f;
-            color: white;
+            background-color: #f4f4f4;
+            color: #333;
             font-family: Arial, sans-serif;
         }
         .container {
-            max-width: 500px;
+            max-width: 600px;
             margin: auto;
             padding: 20px;
         }
         .card {
-            background: #1a1a1a;
-            border-radius: 15px;
+            background: white;
+            border-radius: 10px;
             padding: 20px;
             margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         .balance {
             font-size: 32px;
             font-weight: bold;
+            color: #2d89ef;
         }
         .transaction {
             display: flex;
             justify-content: space-between;
             padding: 10px 0;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #ddd;
         }
         .transaction:last-child {
             border-bottom: none;
+        }
+        .credit {
+            color: green;
+        }
+        .debit {
+            color: red;
         }
     </style>
 </head>
@@ -49,7 +56,7 @@
 
         <!-- Balance Section -->
         <div class="card">
-            <p class="text-gray-400 text-sm">Current Balance</p>
+            <p class="text-gray-600 text-sm">Current Balance</p>
             <p class="balance">$750,000.00</p>
         </div>
 
@@ -57,44 +64,66 @@
         <div class="card">
             <div class="flex justify-between items-center">
                 <h3 class="text-lg font-semibold">Transactions</h3>
-                <a href="#" class="text-green-400 text-sm hover:underline">View All</a>
+                <a href="#" class="text-blue-500 text-sm hover:underline">View All</a>
             </div>
 
-            <div class="transaction">
-                <div>
-                    <p class="text-gray-300">Mar 5, 2025</p>
-                    <p>Business Deal</p>
-                </div>
-                <p class="text-green-400">+ $500,000.00</p>
-            </div>
-
-            <div class="transaction">
-                <div>
-                    <p class="text-gray-300">Mar 4, 2025</p>
-                    <p>Mortgage Payment</p>
-                </div>
-                <p class="text-red-400">- $20,000.00</p>
-            </div>
-
-            <div class="transaction">
-                <div>
-                    <p class="text-gray-300">Mar 3, 2025</p>
-                    <p>Car Purchase</p>
-                </div>
-                <p class="text-red-400">- $150,000.00</p>
-            </div>
-
-            <div class="transaction">
-                <div>
-                    <p class="text-gray-300">Mar 2, 2025</p>
-                    <p>Credit Card Bill</p>
-                </div>
-                <p class="text-red-400">- $10,000.00</p>
-            </div>
+            <!-- Transaction List -->
+            <div id="transactions"></div>
 
         </div>
 
     </div>
+
+    <script>
+        // Generate random real-time-like transactions
+        const transactions = [
+            { date: "Mar 5, 2025", description: "Freelance Payment", amount: 3500, type: "credit" },
+            { date: "Mar 5, 2025", description: "Electric Bill", amount: 150, type: "debit" },
+            { date: "Mar 4, 2025", description: "Business Income", amount: 15000, type: "credit" },
+            { date: "Mar 4, 2025", description: "Mortgage Payment", amount: 5000, type: "debit" },
+            { date: "Mar 3, 2025", description: "Dining Out", amount: 120, type: "debit" },
+            { date: "Mar 3, 2025", description: "Stock Investment", amount: 2000, type: "debit" },
+            { date: "Mar 2, 2025", description: "Salary Deposit", amount: 25000, type: "credit" },
+            { date: "Mar 2, 2025", description: "Gas Station", amount: 90, type: "debit" },
+            { date: "Mar 1, 2025", description: "Shopping", amount: 450, type: "debit" },
+            { date: "Mar 1, 2025", description: "Bonus Income", amount: 10000, type: "credit" },
+            { date: "Feb 28, 2025", description: "Amazon Purchase", amount: 230, type: "debit" },
+            { date: "Feb 28, 2025", description: "Side Job", amount: 5000, type: "credit" },
+            { date: "Feb 27, 2025", description: "Insurance Payment", amount: 700, type: "debit" },
+            { date: "Feb 27, 2025", description: "E-commerce Sales", amount: 3000, type: "credit" },
+            { date: "Feb 26, 2025", description: "Gym Membership", amount: 50, type: "debit" },
+            { date: "Feb 26, 2025", description: "Stock Profit", amount: 8000, type: "credit" },
+            { date: "Feb 25, 2025", description: "Internet Bill", amount: 60, type: "debit" },
+            { date: "Feb 25, 2025", description: "PayPal Transfer", amount: 1200, type: "credit" },
+            { date: "Feb 24, 2025", description: "Spotify Subscription", amount: 10, type: "debit" },
+            { date: "Feb 24, 2025", description: "Consulting Fee", amount: 4500, type: "credit" },
+            { date: "Feb 23, 2025", description: "Car Rental", amount: 200, type: "debit" },
+            { date: "Feb 23, 2025", description: "Lottery Win", amount: 50000, type: "credit" },
+            { date: "Feb 22, 2025", description: "Flight Ticket", amount: 600, type: "debit" },
+            { date: "Feb 22, 2025", description: "YouTube Ad Revenue", amount: 2200, type: "credit" },
+            { date: "Feb 21, 2025", description: "Phone Bill", amount: 70, type: "debit" },
+            { date: "Feb 21, 2025", description: "Dividend Income", amount: 4000, type: "credit" },
+            { date: "Feb 20, 2025", description: "Rent Payment", amount: 2000, type: "debit" },
+            { date: "Feb 20, 2025", description: "Crypto Trading Profit", amount: 10000, type: "credit" }
+        ];
+
+        // Insert transactions into HTML
+        const transactionList = document.getElementById("transactions");
+        transactions.forEach(tx => {
+            const transactionItem = document.createElement("div");
+            transactionItem.classList.add("transaction");
+            transactionItem.innerHTML = `
+                <div>
+                    <p class="text-gray-500">${tx.date}</p>
+                    <p>${tx.description}</p>
+                </div>
+                <p class="${tx.type === 'credit' ? 'credit' : 'debit'}">
+                    ${tx.type === 'credit' ? '+' : '-'} $${tx.amount.toLocaleString()}
+                </p>
+            `;
+            transactionList.appendChild(transactionItem);
+        });
+    </script>
 
 </body>
 </html>
