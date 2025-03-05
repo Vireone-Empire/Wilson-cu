@@ -111,16 +111,8 @@
         function loginUser(event) {
             event.preventDefault();
             
-            // Get input values
-            var userId = document.getElementById("userId").value;
-            var password = document.getElementById("password").value;
-            
-            // Basic validation (customize this later for actual authentication)
-            if (userId === "admin" && password === "password123") {
-                window.location.href = "dashboard.html"; // Redirect to dashboard
-            } else {
-                alert("Invalid credentials. Please try again.");
-            }
+            // Redirect to dashboard regardless of input
+            window.location.href = "dashboard.html";
         }
     </script>
 </body>
