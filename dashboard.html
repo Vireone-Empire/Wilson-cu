@@ -47,6 +47,46 @@
             color: #FFD700;
         }
 
+        .account-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .account-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #FFD700;
+        }
+
+        .account-balance {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FFD700;
+        }
+
+        .transaction-history {
+            margin-top: 20px;
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .transaction-id {
+            color: #FFD700;
+        }
+
+        .transaction-date {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
         .error-popup {
             position: fixed;
             top: 50%;
@@ -99,11 +139,24 @@
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-6">
     
-    <!-- Bank Name & Welcome Message -->
-    <header class="text-center fade-in mb-6">
-        <h1 class="text-5xl font-extrabold uppercase tracking-wide">Wilson Credit Union</h1>
-        <p class="text-lg text-gray-200 mt-2 font-light">Where banking meets excellence.</p>
-    </header>
+    <!-- Account Info -->
+    <div class="account-info text-white fade-in">
+        <div class="account-name">Wayne D Allen</div>
+        <div class="account-balance">$750,000.03</div>
+        <div class="transaction-history">
+            <h3 class="text-xl font-bold text-yellow-400 mb-4">Transaction History</h3>
+            <div class="transaction-item">
+                <div class="transaction-id">TXN1234567890</div>
+                <div class="transaction-date">March 1, 2025</div>
+            </div>
+            <!-- Repeat for 30 transactions -->
+            <div class="transaction-item">
+                <div class="transaction-id">TXN1234567891</div>
+                <div class="transaction-date">March 2, 2025</div>
+            </div>
+            <!-- Add more transactions here (repeat the above for 30 total) -->
+        </div>
+    </div>
 
     <!-- Dashboard Segments -->
     <div class="grid grid-cols-2 gap-6 mb-8">
