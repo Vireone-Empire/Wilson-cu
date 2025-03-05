@@ -44,27 +44,67 @@
     <!-- Welcome Text -->
     <h1 class="text-3xl font-bold mb-6">WELCOME TO WILSON CREDIT UNION</h1>
 
-    <!-- Login Form -->
-    <div class="login-box p-8 rounded-lg max-w-md w-full">
-        <form id="loginForm" class="space-y-5">
-            <div>
-                <label class="block text-sm font-semibold mb-1">USER ID</label>
-                <input type="text" id="userId" class="w-full px-4 py-3 rounded-lg" placeholder="Enter User ID" required>
-                <div class="mt-2 flex items-center">
-                    <input type="checkbox" id="remember" class="mr-2">
-                    <label for="remember" class="text-sm">Remember Me</label>
+    <!-- Main Content Container -->
+    <div class="flex flex-col md:flex-row gap-8 w-full max-w-6xl">
+        <!-- Login Form -->
+        <div class="login-box p-8 rounded-lg max-w-md w-full">
+            <form id="loginForm" class="space-y-5">
+                <div>
+                    <label class="block text-sm font-semibold mb-1">USER ID</label>
+                    <input type="text" id="userId" class="w-full px-4 py-3 rounded-lg" placeholder="Enter User ID" required>
+                    <div class="mt-2 flex items-center">
+                        <input type="checkbox" id="remember" class="mr-2">
+                        <label for="remember" class="text-sm">Remember Me</label>
+                    </div>
                 </div>
+                
+                <div>
+                    <label class="block text-sm font-semibold mb-1">PASSWORD</label>
+                    <input type="password" id="password" class="w-full px-4 py-3 rounded-lg" placeholder="Enter Password" required>
+                </div>
+
+                <button type="submit" class="w-full login-btn text-white py-3 rounded-lg font-bold uppercase tracking-wider">
+                    LOG IN
+                </button>
+            </form>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="flex-1 space-y-6">
+            <!-- Bank Products and Services -->
+            <div class="bg-white bg-opacity-10 p-6 rounded-lg">
+                <h2 class="text-xl font-bold mb-3">Our Products & Services</h2>
+                <ul class="list-disc pl-5 text-sm space-y-1">
+                    <li>Checking & Savings Accounts</li>
+                    <li>Personal & Business Loans</li>
+                    <li>Credit Cards with Cashback Rewards</li>
+                    <li>Auto & Home Loans</li>
+                    <li>Investment & Retirement Planning</li>
+                </ul>
             </div>
             
-            <div>
-                <label class="block text-sm font-semibold mb-1">PASSWORD</label>
-                <input type="password" id="password" class="w-full px-4 py-3 rounded-lg" placeholder="Enter Password" required>
+            <!-- Banking Tips -->
+            <div class="bg-white bg-opacity-10 p-6 rounded-lg">
+                <h2 class="text-xl font-bold mb-3">Smart Banking Tips</h2>
+                <ul class="list-disc pl-5 text-sm space-y-1">
+                    <li>Set up automatic bill payments to avoid late fees.</li>
+                    <li>Monitor your transactions regularly for fraud protection.</li>
+                    <li>Use online banking to manage your finances easily.</li>
+                    <li>Take advantage of our financial planning services.</li>
+                </ul>
             </div>
-
-            <button type="submit" class="w-full login-btn text-white py-3 rounded-lg font-bold uppercase tracking-wider">
-                LOG IN
-            </button>
-        </form>
+            
+            <!-- Saving Tips -->
+            <div class="bg-white bg-opacity-10 p-6 rounded-lg">
+                <h2 class="text-xl font-bold mb-3">Smart Saving Strategies</h2>
+                <ul class="list-disc pl-5 text-sm space-y-1">
+                    <li>Create a monthly budget and stick to it.</li>
+                    <li>Save at least 20% of your income for emergencies.</li>
+                    <li>Invest in long-term savings accounts for better returns.</li>
+                    <li>Use a high-yield savings account for extra growth.</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <!-- Footer Section -->
