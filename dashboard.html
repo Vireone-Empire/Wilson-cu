@@ -72,6 +72,8 @@
             padding: 20px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
+            max-height: 400px;
+            overflow-y: auto;
         }
 
         .transaction-item {
@@ -180,13 +182,28 @@
         // Initial balance
         let availableBalance = 750000.03;
 
-        // Transaction history data
+        // Transaction history data (20 rows, October 2024 to January 2025)
         const transactions = [
-            { id: "TXN001", date: "2023-10-01 09:15:00", amount: 1000.00, type: "deposit" },
-            { id: "TXN002", date: "2023-10-02 14:30:00", amount: 500.00, type: "withdrawal" },
-            { id: "TXN003", date: "2023-10-03 11:45:00", amount: 2000.00, type: "deposit" },
-            { id: "TXN004", date: "2023-10-04 16:20:00", amount: 1500.00, type: "withdrawal" },
-            { id: "TXN005", date: "2023-10-05 10:00:00", amount: 3000.00, type: "deposit" },
+            { id: "WCU1001", date: "2024-10-01 09:15:00", amount: 1000.00, type: "deposit" },
+            { id: "WCU1002", date: "2024-10-02 14:30:00", amount: 500.00, type: "withdrawal" },
+            { id: "WCU1003", date: "2024-10-03 11:45:00", amount: 2000.00, type: "deposit" },
+            { id: "WCU1004", date: "2024-10-04 16:20:00", amount: 1500.00, type: "withdrawal" },
+            { id: "WCU1005", date: "2024-10-05 10:00:00", amount: 3000.00, type: "deposit" },
+            { id: "WCU1006", date: "2024-10-06 12:00:00", amount: 1000.00, type: "withdrawal" },
+            { id: "WCU1007", date: "2024-10-07 13:45:00", amount: 2500.00, type: "deposit" },
+            { id: "WCU1008", date: "2024-10-08 15:30:00", amount: 500.00, type: "withdrawal" },
+            { id: "WCU1009", date: "2024-10-09 17:00:00", amount: 3000.00, type: "deposit" },
+            { id: "WCU1010", date: "2024-11-11 18:45:00", amount: 1000.00, type: "withdrawal" },
+            { id: "WCU1011", date: "2024-11-13 19:30:00", amount: 2000.00, type: "deposit" },
+            { id: "WCU1012", date: "2024-12-24 20:15:00", amount: 500.00, type: "withdrawal" },
+            { id: "WCU1013", date: "2025-01-13 21:00:00", amount: 1500.00, type: "deposit" },
+            { id: "WCU1014", date: "2024-01-13 22:45:00", amount: 1000.00, type: "withdrawal" },
+            { id: "WCU1015", date: "2025-01-15 23:30:00", amount: 3000.00, type: "deposit" },
+            { id: "WCU1016", date: "2025-01-16 09:00:00", amount: 500.00, type: "withdrawal" },
+            { id: "WCU1017", date: "2025-01-16 10:45:00", amount: 2000.00, type: "deposit" },
+            { id: "WCU1018", date: "2025-01-18 12:30:00", amount: 1000.00, type: "withdrawal" },
+            { id: "WCU1019", date: "2025-02-19 14:15:00", amount: 3000.00, type: "deposit" },
+            { id: "WCU1020", date: "2025-02-17 00:00:09", amount: 5000.00, type: "deposit" }, // Last transaction in January 2025
         ];
 
         // Function to update the available balance
