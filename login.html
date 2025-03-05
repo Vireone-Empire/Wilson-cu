@@ -3,194 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wilson Credit Union | Secure Banking</title>
-
-    <!-- Tailwind CSS -->
+    <title>Wilson Credit Union - Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Custom Styles -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f4f5f7;
-            color: #333;
+        @keyframes textSlide {
+            0% {opacity: 0; transform: translateY(-10px);}
+            50% {opacity: 1; transform: translateY(0px);}
+            100% {opacity: 0; transform: translateY(10px);}
         }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .section {
-            padding: 60px 20px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .btn-primary {
-            background: #1d3557;
-            color: white;
-            padding: 12px 24px;
-            font-weight: 600;
-            border-radius: 8px;
-        }
-
-        .btn-primary:hover {
-            background: #457b9d;
-        }
-
-        .login-modal {
-            background: white;
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            max-width: 400px;
-            width: 90%;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 900;
+        .animated-text {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #444;
+            animation: textSlide 5s infinite;
         }
     </style>
 </head>
-<body>
-
-    <!-- Header -->
-    <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-gray-800">Wilson Credit Union</h1>
-        <button onclick="openLogin()" class="btn-primary">
-            Login
-        </button>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="section text-center bg-gray-100">
-        <h2 class="text-4xl font-bold mb-4">Bank Smarter, Live Better</h2>
-        <p class="text-lg max-w-2xl mx-auto">
-            Wilson Credit Union offers secure and innovative banking solutions tailored to your needs.
-            Experience the future of banking with us.
-        </p>
-        <div class="mt-6">
-            <button onclick="openLogin()" class="btn-primary">Access Your Account</button>
+<body class="bg-[#f4f4f4] text-gray-800">
+    <div class="max-w-lg mx-auto p-6 space-y-6">
+        <div class="text-center bg-white p-6 rounded-lg shadow-lg">
+            <p class="animated-text text-lg font-semibold" id="changingText">Secure & Reliable Banking</p>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="section container">
-        <h2 class="text-3xl font-bold text-center mb-6">Our Services</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-semibold mb-2">Online Banking</h3>
-                <p>Manage your finances anytime, anywhere with our secure online banking platform.</p>
-            </div>
-            <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-semibold mb-2">Personal Loans</h3>
-                <p>Flexible loan options to help you achieve your financial goals.</p>
-            </div>
-            <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-semibold mb-2">Savings & Investments</h3>
-                <p>Grow your wealth with our high-yield savings and investment options.</p>
-            </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold text-center text-[#1A237E]">Wilson Credit Union</h2>
+            <form id="loginForm" class="mt-6">
+                <div>
+                    <label class="block text-gray-700">Email</label>
+                    <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A237E]" required>
+                </div>
+                <div class="mt-4">
+                    <label class="block text-gray-700">Password</label>
+                    <input type="password" id="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A237E]" required>
+                </div>
+                <button type="submit" class="w-full mt-6 bg-[#1A237E] text-white py-2 rounded-lg hover:bg-[#0D1B4D]">Login</button>
+            </form>
         </div>
-    </section>
-
-    <!-- Banking Features -->
-    <section class="section bg-gray-100">
-        <h2 class="text-3xl font-bold text-center mb-6">Why Bank With Us?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 container">
-            <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-semibold mb-2">Advanced Security</h3>
-                <p>We use the latest encryption and security measures to protect your data.</p>
-            </div>
-            <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-semibold mb-2">24/7 Customer Support</h3>
-                <p>Our dedicated support team is always available to assist you.</p>
-            </div>
-            <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-semibold mb-2">Fast Transactions</h3>
-                <p>Experience seamless and quick transactions anytime.</p>
-            </div>
-            <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-semibold mb-2">No Hidden Fees</h3>
-                <p>Transparent pricing with no surprises.</p>
-            </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-semibold">Our Products & Services</h3>
+            <ul class="list-disc list-inside mt-2">
+                <li>Personal & Business Loans</li>
+                <li>Credit & Debit Cards</li>
+                <li>Investment Plans</li>
+                <li>Mobile & Online Banking</li>
+            </ul>
         </div>
-    </section>
-
-    <!-- Financial Education -->
-    <section class="section container">
-        <h2 class="text-3xl font-bold text-center mb-6">Financial Education</h2>
-        <p class="text-lg text-center max-w-3xl mx-auto mb-6">
-            Empower yourself with financial knowledge. Explore our educational resources to make informed decisions.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-semibold mb-2">Budgeting Basics</h3>
-                <p>Learn how to manage your income and expenses effectively.</p>
-            </div>
-            <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-semibold mb-2">Credit Score Tips</h3>
-                <p>Understand how to build and maintain a strong credit score.</p>
-            </div>
-            <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-semibold mb-2">Investment Strategies</h3>
-                <p>Discover smart ways to grow your money for the future.</p>
-            </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-semibold">Promotional Status</h3>
+            <p class="mt-2">Get up to <span class="font-bold text-green-600">5% cashback</span> on all online purchases using Wilson Credit Union Cards.</p>
         </div>
-    </section>
-
-    <!-- Dark Overlay -->
-    <div class="overlay" id="overlay" onclick="closeLogin()"></div>
-
-    <!-- Login Modal -->
-    <div class="login-modal" id="loginBox">
-        <div class="text-right">
-            <button onclick="closeLogin()" class="text-red-500 text-lg font-bold">&times;</button>
-        </div>
-        <h2 class="text-2xl font-bold mb-4 text-center">Login to Your Account</h2>
-        <form class="space-y-5">
-            <div>
-                <label class="block text-sm font-semibold mb-1">USER ID</label>
-                <input type="text" class="w-full px-4 py-3 border rounded-lg" placeholder="Enter User ID">
-            </div>
-            
-            <div>
-                <label class="block text-sm font-semibold mb-1">PASSWORD</label>
-                <input type="password" class="w-full px-4 py-3 border rounded-lg" placeholder="Enter Password">
-            </div>
-
-            <button class="w-full btn-primary py-3 rounded-lg font-bold uppercase tracking-wider">
-                LOG IN
-            </button>
-        </form>
     </div>
-
-    <!-- JavaScript -->
+    
     <script>
-        function openLogin() {
-            document.getElementById("loginBox").style.display = "block";
-            document.getElementById("overlay").style.display = "block";
-        }
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            window.location.href = "dashboard.html";
+        });
 
-        function closeLogin() {
-            document.getElementById("loginBox").style.display = "none";
-            document.getElementById("overlay").style.display = "none";
+        const messages = ["Secure & Reliable Banking", "Your Money, Your Future", "24/7 Account Access"];
+        let index = 0;
+        function changeText() {
+            document.getElementById("changingText").innerText = messages[index];
+            index = (index + 1) % messages.length;
         }
+        setInterval(changeText, 5000);
     </script>
-
 </body>
 </html>
