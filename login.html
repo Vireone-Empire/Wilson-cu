@@ -10,27 +10,37 @@
 
     <!-- Custom Styles -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+            background: #f4f5f7;
             color: #333;
         }
 
-        .hero {
-            background: linear-gradient(to right, #1d2b64, #2c5364);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
+        .container {
+            max-width: 1200px;
+            margin: auto;
         }
 
         .section {
             padding: 60px 20px;
-            text-align: center;
+            border-bottom: 1px solid #ddd;
         }
 
-        .login-box {
+        .btn-primary {
+            background: #1d3557;
+            color: white;
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+
+        .btn-primary:hover {
+            background: #457b9d;
+        }
+
+        .login-modal {
             background: white;
             display: none;
             position: fixed;
@@ -52,27 +62,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 900;
-        }
-
-        .slider {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            height: 350px;
-        }
-
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .slide.active {
-            opacity: 1;
         }
     </style>
 </head>
@@ -81,84 +72,92 @@
     <!-- Header -->
     <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
         <h1 class="text-2xl font-bold text-gray-800">Wilson Credit Union</h1>
-        <button onclick="openLogin()" class="px-6 py-2 bg-yellow-500 text-black font-bold rounded-lg text-lg">
+        <button onclick="openLogin()" class="btn-primary">
             Login
         </button>
     </header>
 
-    <!-- Hero Slider -->
-    <div class="slider">
-        <div class="slide active" style="background: url('https://source.unsplash.com/1600x900/?banking,finance') center/cover;"></div>
-        <div class="slide" style="background: url('https://source.unsplash.com/1600x900/?wealth,invest') center/cover;"></div>
-        <div class="slide" style="background: url('https://source.unsplash.com/1600x900/?online-banking,security') center/cover;"></div>
-        <div class="slide" style="background: url('https://source.unsplash.com/1600x900/?credit-card,transactions') center/cover;"></div>
-    </div>
-
-    <!-- About Section -->
-    <div class="section">
-        <h2 class="text-3xl font-bold mb-4">Welcome to Wilson Credit Union</h2>
-        <p class="max-w-3xl mx-auto text-lg">
-            Your trusted financial partner, offering secure banking services, loans, savings plans, and investment opportunities.
-            Our commitment is to provide top-tier banking solutions that empower you to achieve financial success.
+    <!-- Hero Section -->
+    <section class="section text-center bg-gray-100">
+        <h2 class="text-4xl font-bold mb-4">Bank Smarter, Live Better</h2>
+        <p class="text-lg max-w-2xl mx-auto">
+            Wilson Credit Union offers secure and innovative banking solutions tailored to your needs.
+            Experience the future of banking with us.
         </p>
-    </div>
+        <div class="mt-6">
+            <button onclick="openLogin()" class="btn-primary">Access Your Account</button>
+        </div>
+    </section>
 
-    <!-- Banking News Section -->
-    <div class="section bg-gray-100">
-        <h2 class="text-3xl font-bold mb-4">Latest Banking News</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+    <!-- Services Section -->
+    <section class="section container">
+        <h2 class="text-3xl font-bold text-center mb-6">Our Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-bold mb-2">Digital Banking is the Future</h3>
-                <p>Learn how online banking is transforming the way we manage our finances.</p>
+                <h3 class="text-xl font-semibold mb-2">Online Banking</h3>
+                <p>Manage your finances anytime, anywhere with our secure online banking platform.</p>
             </div>
             <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-bold mb-2">Interest Rates Update</h3>
-                <p>Check the latest updates on savings account interest rates.</p>
+                <h3 class="text-xl font-semibold mb-2">Personal Loans</h3>
+                <p>Flexible loan options to help you achieve your financial goals.</p>
             </div>
             <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-bold mb-2">Credit Score Tips</h3>
-                <p>Improve your credit score with these essential financial habits.</p>
+                <h3 class="text-xl font-semibold mb-2">Savings & Investments</h3>
+                <p>Grow your wealth with our high-yield savings and investment options.</p>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Banking Features -->
+    <section class="section bg-gray-100">
+        <h2 class="text-3xl font-bold text-center mb-6">Why Bank With Us?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 container">
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">Advanced Security</h3>
+                <p>We use the latest encryption and security measures to protect your data.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">24/7 Customer Support</h3>
+                <p>Our dedicated support team is always available to assist you.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">Fast Transactions</h3>
+                <p>Experience seamless and quick transactions anytime.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">No Hidden Fees</h3>
+                <p>Transparent pricing with no surprises.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Financial Education -->
-    <div class="section">
-        <h2 class="text-3xl font-bold mb-4">Financial Education</h2>
-        <p>We provide financial literacy resources to help you make informed money decisions.</p>
-        <ul class="list-disc max-w-lg mx-auto text-left mt-4 text-lg">
-            <li>How to budget effectively</li>
-            <li>Understanding credit scores</li>
-            <li>Smart investing for beginners</li>
-            <li>Retirement planning strategies</li>
-        </ul>
-    </div>
-
-    <!-- Investment Opportunities -->
-    <div class="section bg-gray-100">
-        <h2 class="text-3xl font-bold mb-4">Investment Opportunities</h2>
-        <p>Grow your wealth with secure investment plans.</p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+    <section class="section container">
+        <h2 class="text-3xl font-bold text-center mb-6">Financial Education</h2>
+        <p class="text-lg text-center max-w-3xl mx-auto mb-6">
+            Empower yourself with financial knowledge. Explore our educational resources to make informed decisions.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-bold mb-2">Stocks & Bonds</h3>
-                <p>Invest in profitable stocks and government-backed bonds.</p>
+                <h3 class="text-xl font-semibold mb-2">Budgeting Basics</h3>
+                <p>Learn how to manage your income and expenses effectively.</p>
             </div>
             <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-bold mb-2">Real Estate Investments</h3>
-                <p>Diversify your portfolio with real estate opportunities.</p>
+                <h3 class="text-xl font-semibold mb-2">Credit Score Tips</h3>
+                <p>Understand how to build and maintain a strong credit score.</p>
             </div>
             <div class="p-6 bg-white shadow-lg rounded-lg">
-                <h3 class="text-xl font-bold mb-2">Retirement Savings</h3>
-                <p>Start saving for retirement with our long-term investment plans.</p>
+                <h3 class="text-xl font-semibold mb-2">Investment Strategies</h3>
+                <p>Discover smart ways to grow your money for the future.</p>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Dark Overlay -->
     <div class="overlay" id="overlay" onclick="closeLogin()"></div>
 
     <!-- Login Modal -->
-    <div class="login-box" id="loginBox">
+    <div class="login-modal" id="loginBox">
         <div class="text-right">
             <button onclick="closeLogin()" class="text-red-500 text-lg font-bold">&times;</button>
         </div>
@@ -166,15 +165,15 @@
         <form class="space-y-5">
             <div>
                 <label class="block text-sm font-semibold mb-1">USER ID</label>
-                <input type="text" class="w-full px-4 py-3 rounded-lg" placeholder="Enter User ID">
+                <input type="text" class="w-full px-4 py-3 border rounded-lg" placeholder="Enter User ID">
             </div>
             
             <div>
                 <label class="block text-sm font-semibold mb-1">PASSWORD</label>
-                <input type="password" class="w-full px-4 py-3 rounded-lg" placeholder="Enter Password">
+                <input type="password" class="w-full px-4 py-3 border rounded-lg" placeholder="Enter Password">
             </div>
 
-            <button class="w-full login-btn py-3 rounded-lg font-bold uppercase tracking-wider">
+            <button class="w-full btn-primary py-3 rounded-lg font-bold uppercase tracking-wider">
                 LOG IN
             </button>
         </form>
