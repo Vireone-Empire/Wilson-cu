@@ -6,61 +6,68 @@
     <title>Login | Wilson Credit Union</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
         body {
-            background: linear-gradient(to right, #1e3a8a, #2563eb);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #b8860b, #ffd700);
+            color: white;
+            overflow: hidden;
         }
-        .fade-in {
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .login-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             animation: fadeIn 1.5s ease-in-out;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
+            from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body>
-    <div class="max-w-md w-full p-8 bg-white shadow-lg rounded-lg fade-in">
-        <!-- Bank Logo -->
-        <div class="text-center mb-4">
-            <img src="logo.png" alt="Wilson Credit Union" class="w-20 mx-auto">
-            <h1 class="text-xl font-bold text-blue-600 mt-2">Wilson Credit Union</h1>
-        </div>
-        
-        <!-- Bank Ads & Services -->
-        <div class="bg-blue-100 p-4 rounded-lg mb-4 text-center">
-            <p class="text-blue-700 font-medium">📢 New Savings Account Offer! Earn up to 5% interest.</p>
-        </div>
-
-        <!-- Login Form -->
-        <h2 class="text-2xl font-bold text-center text-blue-600">Login to Your Account</h2>
+<body class="flex flex-col items-center justify-center min-h-screen text-white relative">
+    <video autoplay muted loop class="video-bg">
+        <source src="https://cdn.pixabay.com/video/2023/10/01/184179-865598332_large.mp4" type="video/mp4">
+    </video>
+    
+    <header class="text-center mb-6">
+        <img src="logo.png" alt="Wilson Credit Union" class="h-16 mx-auto">
+        <h1 class="text-4xl font-bold text-white">Wilson Credit Union</h1>
+        <p class="text-lg text-gray-200 mt-2">Premium Banking Experience</p>
+    </header>
+    
+    <div class="login-container text-center max-w-md w-full">
+        <h2 class="text-2xl font-bold text-gold-400">Login to Your Account</h2>
         <form class="mt-6">
             <div class="mb-4">
-                <label class="block text-gray-700 font-medium">Email Address</label>
-                <input type="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email">
+                <label class="block text-gray-300 font-medium">Email Address</label>
+                <input type="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500" placeholder="Enter your email">
             </div>
-            
             <div class="mb-4">
-                <label class="block text-gray-700 font-medium">Password</label>
-                <input type="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your password">
+                <label class="block text-gray-300 font-medium">Password</label>
+                <input type="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500" placeholder="Enter your password">
             </div>
-
-            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium">
+            <button class="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-2 rounded-lg font-medium">
                 Login
             </button>
         </form>
-        
-        <p class="text-center text-gray-500 mt-4">
-            Don't have an account? <a href="register.html" class="text-blue-600 hover:underline">Sign Up</a>
-        </p>
-
-        <p class="text-center text-gray-500 mt-2">
-            <a href="index.html" class="text-blue-600 hover:underline">Back to Home</a>
-        </p>
     </div>
+    
+    <footer class="mt-6 text-center text-gray-300 text-sm">
+        <p>🔒 <strong>Security Tips:</strong> Never share your password.</p>
+        <p>✅ Always log out on public devices.</p>
+        <p>📧 Wilson Credit Union never asks for login details via email.</p>
+    </footer>
 </body>
 </html>
