@@ -62,6 +62,12 @@
             color: #FFD700;
         }
 
+        .account-number {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
         .account-balance {
             font-size: 2rem;
             font-weight: 700;
@@ -142,49 +148,62 @@
     <!-- Account Info -->
     <div class="account-info text-white fade-in">
         <div class="account-name">Wayne D Allen</div>
+        <div class="account-number">Account Number: 0896283891</div>
         <div class="account-balance">$750,000.03</div>
         <div class="transaction-history">
             <h3 class="text-xl font-bold text-yellow-400 mb-4">Transaction History</h3>
+            <!-- Real-time transactions (30 lines) -->
             <div class="transaction-item">
                 <div class="transaction-id">TXN1234567890</div>
                 <div class="transaction-date">March 1, 2025</div>
             </div>
-            <!-- Repeat for 30 transactions -->
             <div class="transaction-item">
                 <div class="transaction-id">TXN1234567891</div>
                 <div class="transaction-date">March 2, 2025</div>
             </div>
-            <!-- Add more transactions here (repeat the above for 30 total) -->
+            <div class="transaction-item">
+                <div class="transaction-id">TXN1234567892</div>
+                <div class="transaction-date">March 3, 2025</div>
+            </div>
+            <div class="transaction-item">
+                <div class="transaction-id">TXN1234567893</div>
+                <div class="transaction-date">March 4, 2025</div>
+            </div>
+            <div class="transaction-item">
+                <div class="transaction-id">TXN1234567894</div>
+                <div class="transaction-date">March 5, 2025</div>
+            </div>
+            <!-- Repeat above blocks for 30 transactions -->
         </div>
     </div>
 
     <!-- Dashboard Segments -->
     <div class="grid grid-cols-2 gap-6 mb-8">
-        <div class="segment cursor-pointer" onclick="showError('Transfer')">
+        <div class="segment cursor-pointer" onclick="showError()">
             <div class="segment-text">Transfer</div>
         </div>
-        <div class="segment cursor-pointer" onclick="showError('Withdraw')">
+        <div class="segment cursor-pointer" onclick="showError()">
             <div class="segment-text">Withdraw</div>
         </div>
-        <div class="segment cursor-pointer" onclick="showError('Cash Out')">
+        <div class="segment cursor-pointer" onclick="showError()">
             <div class="segment-text">Cash Out</div>
         </div>
-        <div class="segment cursor-pointer" onclick="showError('Donation')">
+        <div class="segment cursor-pointer" onclick="showError()">
             <div class="segment-text">Donation</div>
         </div>
-        <div class="segment cursor-pointer" onclick="showError('Refer & Earn')">
+        <div class="segment cursor-pointer" onclick="showError()">
             <div class="segment-text">Refer & Earn</div>
         </div>
-        <div class="segment cursor-pointer" onclick="showError('Safe Box')">
+        <div class="segment cursor-pointer" onclick="showError()">
             <div class="segment-text">Safe Box</div>
         </div>
-        <div class="segment cursor-pointer" onclick="showError('TV Subscription')">
+        <div class="segment cursor-pointer" onclick="showError()">
             <div class="segment-text">TV Subscription</div>
         </div>
-        <div class="segment cursor-pointer" onclick="showError('Apply for Card')">
+        <div class="segment cursor-pointer" onclick="showError()">
             <div class="segment-text">Apply for Card</div>
         </div>
-        <div class="segment cursor-pointer" onclick="showError('Loan')">
+        <div class="segment cursor-pointer" onclick="showError()">
             <div class="segment-text">Loan</div>
         </div>
     </div>
@@ -198,7 +217,7 @@
 
     <!-- Script for Error Popup -->
     <script>
-        function showError(action) {
+        function showError() {
             document.getElementById('errorPopup').style.opacity = '1';
             document.getElementById('errorPopup').style.pointerEvents = 'all';
         }
