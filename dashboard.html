@@ -13,164 +13,226 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
         
         body {
-            background: linear-gradient(to right, #005c97, #363795);
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
             font-family: 'Montserrat', sans-serif;
             color: white;
+            margin: 0;
+            padding: 0;
         }
 
-        .fade-in {
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+        }
+
+        .balance-card {
+            background: linear-gradient(to right, #1d2b64, #2c3e50);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
             animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .quick-action-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .quick-action-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .transactions {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .modal-btn {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+
+        .modal-btn:hover {
+            background: #1d2b64;
         }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        .login-box {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .login-btn {
-            background: linear-gradient(to right, #FFD700, #B8860B);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .login-btn:hover {
-            background: linear-gradient(to right, #B8860B, #FFD700);
-            transform: scale(1.05);
-        }
-
-        input {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-        }
-
-        input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        input:focus {
-            outline: none;
-            border: 2px solid #FFD700;
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .transactions-table {
-            margin-top: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow-x: auto;
-            padding: 20px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 50;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: #1a1a1a;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 400px;
-            width: 100%;
-        }
-
-        .modal-btn {
-            background: #FFD700;
-            color: #1a1a1a;
-            border: none;
-            padding: 10px 20px;
-            margin-top: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen text-white p-6">
-
-    <!-- Account Balance and Info -->
-    <div class="max-w-4xl w-full p-6 bg-gradient-to-r from-indigo-800 to-indigo-500 rounded-lg shadow-lg">
-        <div class="flex justify-between items-center">
-            <h2 class="text-2xl font-bold">Account Overview</h2>
-            <p class="text-lg text-gray-200">Account Number: 0896283891</p>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="text-2xl font-bold">Hi, Wayne D Allen</h1>
+            <button class="bg-gradient-to-r from-blue-500 to-blue-600 px-4 py-2 rounded-lg">Home</button>
         </div>
 
-        <div class="mt-4">
-            <p class="text-3xl font-bold">Account Balance: $750,000.03</p>
-            <p class="text-xl mt-2">Owner: Wayne D Allen</p>
+        <!-- Balance Card -->
+        <div class="balance-card">
+            <p class="text-lg">Available Balance</p>
+            <p class="text-3xl font-bold" id="availableBalance">$750,000.03</p>
         </div>
-    </div>
 
-    <!-- Quick Action Buttons -->
-    <div class="mt-8 w-full max-w-4xl p-6 grid grid-cols-3 gap-4">
-        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Transfer</button>
-        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Withdraw</button>
-        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Cash Out</button>
-        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Donation</button>
-        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Refer & Earn</button>
-        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Safe Box</button>
-        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">TV Subscription</button>
-        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Apply for Card</button>
-        <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-4 rounded-lg text-white hover:scale-105 transition-all">Loan</button>
-    </div>
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <div class="quick-action-btn" onclick="showErrorModal()">Transfer</div>
+            <div class="quick-action-btn" onclick="showErrorModal()">Pay Bills</div>
+            <div class="quick-action-btn" onclick="showErrorModal()">Deposit</div>
+            <div class="quick-action-btn" onclick="showErrorModal()">Withdraw</div>
+            <div class="quick-action-btn" onclick="showErrorModal()">Send Money</div>
+            <div class="quick-action-btn" onclick="showErrorModal()">Mobile Check Deposit</div>
+            <div class="quick-action-btn" onclick="showErrorModal()">Account Details</div>
+            <div class="quick-action-btn" onclick="showErrorModal()">Card Services</div>
+            <div class="quick-action-btn" onclick="showErrorModal()">Loan Payment</div>
+            <div class="quick-action-btn" onclick="showErrorModal()">Investment</div>
+            <div class="quick-action-btn" onclick="showErrorModal()">Rewards</div>
+            <div class="quick-action-btn" onclick="showErrorModal()">Settings</div>
+        </div>
 
-    <!-- Transaction History -->
-    <div class="transactions-table">
-        <h3 class="text-2xl font-bold mb-4">Recent Transactions</h3>
-        <table class="w-full table-auto text-gray-200">
-            <thead>
-                <tr>
-                    <th class="py-2 px-4">Transaction ID</th>
-                    <th class="py-2 px-4">Date & Time</th>
-                    <th class="py-2 px-4">Amount</th>
-                    <th class="py-2 px-4">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Example transaction rows, replace with actual data -->
-                <tr><td class="py-2 px-4">TXN001</td><td class="py-2 px-4">2025-03-05 10:00:00</td><td class="py-2 px-4">$1,000.00</td><td class="py-2 px-4">Completed</td></tr>
-                <tr><td class="py-2 px-4">TXN002</td><td class="py-2 px-4">2025-03-05 10:05:00</td><td class="py-2 px-4">$500.00</td><td class="py-2 px-4">Completed</td></tr>
-                <tr><td class="py-2 px-4">TXN003</td><td class="py-2 px-4">2025-03-05 10:10:00</td><td class="py-2 px-4">$2,000.00</td><td class="py-2 px-4">Pending</td></tr>
-                <!-- Add 17 more rows as needed -->
-            </tbody>
-        </table>
+        <!-- Transaction History -->
+        <div class="transactions">
+            <h2 class="text-xl font-bold mb-4">Transaction History</h2>
+            <div id="transactionHistory">
+                <!-- Transactions will be dynamically added here -->
+            </div>
+        </div>
 
-        <button class="bg-gradient-to-r from-indigo-600 to-indigo-800 text-white p-3 rounded-lg mt-4">Past Transactions</button>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal" id="modal">
-        <div class="modal-content text-center">
-            <h3 class="text-xl font-bold text-yellow-500">This action cannot be processed</h3>
-            <p>Please contact your bank for further assistance.</p>
-            <button class="modal-btn" onclick="closeModal()">Close</button>
+        <!-- Error Modal -->
+        <div class="modal" id="errorModal">
+            <div class="modal-content">
+                <h3 class="text-xl font-bold text-yellow-500">Action Unavailable</h3>
+                <p class="mt-4">We're sorry, but this action cannot be performed at the moment. Please contact our support team for further assistance.</p>
+                <button class="modal-btn" onclick="closeErrorModal()">Close</button>
+            </div>
         </div>
     </div>
 
     <script>
-        // Show the modal on page click
-        document.body.addEventListener('click', function() {
-            document.getElementById('modal').style.display = 'flex';
-        });
+        // Initial balance
+        let availableBalance = 750000.03;
 
-        // Close the modal
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
+        // Transaction history data
+        const transactions = [
+            { id: "TXN001", date: "2023-10-01 09:15:00", amount: 1000.00, type: "deposit" },
+            { id: "TXN002", date: "2023-10-02 14:30:00", amount: 500.00, type: "withdrawal" },
+            { id: "TXN003", date: "2023-10-03 11:45:00", amount: 2000.00, type: "deposit" },
+            { id: "TXN004", date: "2023-10-04 16:20:00", amount: 1500.00, type: "withdrawal" },
+            { id: "TXN005", date: "2023-10-05 10:00:00", amount: 3000.00, type: "deposit" },
+        ];
+
+        // Function to update the available balance
+        function updateBalance() {
+            document.getElementById('availableBalance').textContent = `$${availableBalance.toFixed(2)}`;
+        }
+
+        // Function to display transactions
+        function displayTransactions() {
+            const transactionHistory = document.getElementById('transactionHistory');
+            transactionHistory.innerHTML = transactions
+                .map(transaction => `
+                    <div class="transaction-item">
+                        <span>${transaction.id} - ${transaction.date}</span>
+                        <span class="${transaction.type === 'deposit' ? 'text-green-400' : 'text-red-400'}">
+                            ${transaction.type === 'deposit' ? '+' : '-'}$${transaction.amount.toFixed(2)}
+                        </span>
+                    </div>
+                `)
+                .join('');
+        }
+
+        // Function to calculate the final balance
+        function calculateFinalBalance() {
+            transactions.forEach(transaction => {
+                if (transaction.type === 'deposit') {
+                    availableBalance += transaction.amount;
+                } else {
+                    availableBalance -= transaction.amount;
+                }
+            });
+        }
+
+        // Initialize
+        calculateFinalBalance();
+        updateBalance();
+        displayTransactions();
+
+        // Show error modal
+        function showErrorModal() {
+            document.getElementById('errorModal').style.display = 'flex';
+        }
+
+        // Close error modal
+        function closeErrorModal() {
+            document.getElementById('errorModal').style.display = 'none';
         }
     </script>
 </body>
