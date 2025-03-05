@@ -4,123 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Wilson Credit Union</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles -->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+        
         body {
-            background-color: #f8fafc;
-            color: #333;
-            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right, #8B8000, #FFD700);
+            font-family: 'Montserrat', sans-serif;
+            color: white;
         }
-        .container {
-            max-width: 700px;
-            margin: auto;
+
+        .fade-in {
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .segment {
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
         }
-        .card {
-            background: white;
-            border-radius: 12px;
+
+        .segment:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .segment-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-align: center;
+            color: #FFD700;
+        }
+
+        .error-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.75);
             padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            color: white;
+            opacity: 0;
+            pointer-events: none;
+            animation: fadeInError 1s forwards;
         }
-        .balance {
-            font-size: 42px;
+
+        @keyframes fadeInError {
+            0% { opacity: 0; transform: translate(-50%, -60%); }
+            100% { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        .error-message {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #FFD700;
+        }
+
+        .error-details {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .close-btn {
+            background-color: #FFD700;
+            border: none;
+            padding: 10px 20px;
+            color: black;
             font-weight: bold;
-            color: #1D4ED8;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .transaction {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #ddd;
-        }
-        .transaction:last-child {
-            border-bottom: none;
-        }
-        .credit {
-            color: green;
-        }
-        .debit {
-            color: red;
-        }
-        .transaction-id {
-            font-size: 12px;
-            color: gray;
-        }
-        .timestamp {
-            font-size: 12px;
-            color: gray;
+
+        .close-btn:hover {
+            background-color: #B8860B;
         }
     </style>
 </head>
-<body>
+<body class="flex flex-col items-center justify-center min-h-screen p-6">
+    
+    <!-- Bank Name & Welcome Message -->
+    <header class="text-center fade-in mb-6">
+        <h1 class="text-5xl font-extrabold uppercase tracking-wide">Wilson Credit Union</h1>
+        <p class="text-lg text-gray-200 mt-2 font-light">Where banking meets excellence.</p>
+    </header>
 
-    <div class="container">
-
-        <!-- User Info -->
-        <div class="card text-center">
-            <h2 class="text-2xl font-semibold">Welcome, Wayne D Allen</h2>
+    <!-- Dashboard Segments -->
+    <div class="grid grid-cols-2 gap-6 mb-8">
+        <div class="segment cursor-pointer" onclick="showError('Transfer')">
+            <div class="segment-text">Transfer</div>
         </div>
-
-        <!-- Balance Section -->
-        <div class="card text-center">
-            <p class="text-gray-600 text-sm">Current Balance</p>
-            <p class="balance">$750,000.00</p>
+        <div class="segment cursor-pointer" onclick="showError('Withdraw')">
+            <div class="segment-text">Withdraw</div>
         </div>
-
-        <!-- Transactions -->
-        <div class="card">
-            <div class="flex justify-between items-center">
-                <h3 class="text-lg font-semibold">Recent Transactions</h3>
-                <a href="#" class="text-blue-500 text-sm hover:underline">View All</a>
-            </div>
-
-            <!-- Transaction List -->
-            <div id="transactions"></div>
-
+        <div class="segment cursor-pointer" onclick="showError('Cash Out')">
+            <div class="segment-text">Cash Out</div>
         </div>
-
+        <div class="segment cursor-pointer" onclick="showError('Donation')">
+            <div class="segment-text">Donation</div>
+        </div>
+        <div class="segment cursor-pointer" onclick="showError('Refer & Earn')">
+            <div class="segment-text">Refer & Earn</div>
+        </div>
+        <div class="segment cursor-pointer" onclick="showError('Safe Box')">
+            <div class="segment-text">Safe Box</div>
+        </div>
+        <div class="segment cursor-pointer" onclick="showError('TV Subscription')">
+            <div class="segment-text">TV Subscription</div>
+        </div>
+        <div class="segment cursor-pointer" onclick="showError('Apply for Card')">
+            <div class="segment-text">Apply for Card</div>
+        </div>
+        <div class="segment cursor-pointer" onclick="showError('Loan')">
+            <div class="segment-text">Loan</div>
+        </div>
     </div>
 
+    <!-- Error Popup -->
+    <div id="errorPopup" class="error-popup">
+        <div class="error-message">This action cannot be processed</div>
+        <div class="error-details">Please contact your bank for further assistance.</div>
+        <button class="close-btn" onclick="closeError()">Close</button>
+    </div>
+
+    <!-- Script for Error Popup -->
     <script>
-        // Function to generate a random transaction ID
-        function generateTransactionID() {
-            return 'TX' + Math.floor(100000000 + Math.random() * 900000000);
+        function showError(action) {
+            document.getElementById('errorPopup').style.opacity = '1';
+            document.getElementById('errorPopup').style.pointerEvents = 'all';
         }
 
-        // Generate random real-time-like transactions
-        const transactions = [
-            { date: "Mar 5, 2025", time: "10:45 AM", description: "Freelance Payment", amount: 3500, type: "credit" },
-            { date: "Mar 5, 2025", time: "9:30 AM", description: "Electric Bill", amount: 150, type: "debit" },
-            { date: "Mar 4, 2025", time: "7:15 PM", description: "Business Income", amount: 15000, type: "credit" },
-            { date: "Mar 4, 2025", time: "5:00 PM", description: "Mortgage Payment", amount: 5000, type: "debit" },
-            { date: "Mar 3, 2025", time: "2:20 PM", description: "Dining Out", amount: 120, type: "debit" },
-            { date: "Mar 3, 2025", time: "1:05 PM", description: "Stock Investment", amount: 2000, type: "debit" },
-            { date: "Mar 2, 2025", time: "11:45 AM", description: "Salary Deposit", amount: 25000, type: "credit" },
-            { date: "Mar 2, 2025", time: "8:10 AM", description: "Gas Station", amount: 90, type: "debit" },
-            { date: "Mar 1, 2025", time: "6:30 PM", description: "Shopping", amount: 450, type: "debit" },
-            { date: "Mar 1, 2025", time: "4:45 PM", description: "Bonus Income", amount: 10000, type: "credit" }
-        ];
-
-        // Insert transactions into HTML
-        const transactionList = document.getElementById("transactions");
-        transactions.forEach(tx => {
-            const transactionItem = document.createElement("div");
-            transactionItem.classList.add("transaction");
-            transactionItem.innerHTML = `
-                <div>
-                    <p class="text-gray-500">${tx.date} • <span class="timestamp">${tx.time}</span></p>
-                    <p class="font-medium">${tx.description}</p>
-                    <p class="transaction-id">${generateTransactionID()}</p>
-                </div>
-                <p class="${tx.type === 'credit' ? 'credit' : 'debit'} font-semibold">
-                    ${tx.type === 'credit' ? '+' : '-'} $${tx.amount.toLocaleString()}
-                </p>
-            `;
-            transactionList.appendChild(transactionItem);
-        });
+        function closeError() {
+            document.getElementById('errorPopup').style.opacity = '0';
+            document.getElementById('errorPopup').style.pointerEvents = 'none';
+        }
     </script>
-
 </body>
 </html>
