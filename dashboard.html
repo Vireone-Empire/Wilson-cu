@@ -13,7 +13,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
         
         body {
-            background: linear-gradient(to right, #003366, #006699); /* Professional blue gradient */
+            background: linear-gradient(to right, #2a2a72, #009FFD);
             font-family: 'Montserrat', sans-serif;
             color: white;
         }
@@ -27,245 +27,177 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .segment {
+        .dashboard-box {
             background: rgba(255, 255, 255, 0.1);
-            padding: 16px;
-            border-radius: 10px;
-            transition: transform 0.3s, background-color 0.3s;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .segment:hover {
+        .action-btn {
+            background: linear-gradient(to right, #FFD700, #B8860B);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .action-btn:hover {
+            background: linear-gradient(to right, #B8860B, #FFD700);
             transform: scale(1.05);
-            background-color: rgba(255, 255, 255, 0.2);
         }
 
-        .segment-text {
-            font-size: 1rem;
-            font-weight: 600;
-            text-align: center;
-            color: #FFD700;
-        }
-
-        .account-info {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 16px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .account-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #FFD700;
-        }
-
-        .account-number {
-            font-size: 1rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .account-balance {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: #FFD700;
-        }
-
-        .transaction-history {
-            margin-top: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-        }
-
-        .transaction-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .transaction-id {
-            color: #FFD700;
-            font-size: 0.9rem;
-        }
-
-        .transaction-date {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-
-        .transaction-amount {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #FFD700;
-        }
-
-        .past-transactions-btn {
-            margin-top: 20px;
-            background-color: #004d7a;
+        input {
+            background: rgba(255, 255, 255, 0.2);
             border: none;
-            padding: 12px 24px;
             color: white;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
         }
 
-        .past-transactions-btn:hover {
-            background-color: #005b85;
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
 
-        .error-popup {
+        input:focus {
+            outline: none;
+            border: 2px solid #FFD700;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Error Popup Styles */
+        #errorPopup {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.75);
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            color: white;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             opacity: 0;
             pointer-events: none;
-            animation: fadeInError 1s forwards;
+            transition: opacity 0.3s ease;
         }
 
-        @keyframes fadeInError {
-            0% { opacity: 0; transform: translate(-50%, -60%); }
-            100% { opacity: 1; transform: translate(-50%, -50%); }
+        .error-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            text-align: center;
+            color: #333;
         }
 
-        .error-message {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #FFD700;
-        }
-
-        .error-details {
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .close-btn {
-            background-color: #FFD700;
-            border: none;
-            padding: 10px 20px;
-            color: black;
+        .error-box h2 {
+            font-size: 18px;
             font-weight: bold;
-            border-radius: 5px;
-            margin-top: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            color: #D9534F;
         }
 
-        .close-btn:hover {
-            background-color: #B8860B;
+        .error-box p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .error-box button {
+            background-color: #D9534F;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .error-box button:hover {
+            background-color: #C9302C;
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen p-6">
+<body class="flex flex-col items-center justify-center min-h-screen text-white p-6">
     
-    <!-- Account Info -->
-    <div class="account-info text-white fade-in">
-        <div class="account-name">Wayne D Allen</div>
-        <div class="account-number">Account Number: 0896283891</div>
-        <div class="account-balance">$750,000.03</div>
-    </div>
+    <!-- Account Balance and User Info -->
+    <div class="dashboard-box text-white p-8 rounded-lg shadow-lg max-w-md w-full fade-in">
+        <h2 class="text-2xl font-bold text-center uppercase tracking-wide mb-4">Account Dashboard</h2>
 
-    <!-- Dashboard Segments -->
-    <div class="grid grid-cols-2 gap-6 mb-8">
-        <div class="segment cursor-pointer" onclick="showError()">
-            <div class="segment-text">Transfer</div>
+        <div class="text-center mb-6">
+            <h3 class="text-xl font-semibold">Account Balance</h3>
+            <p class="text-3xl font-bold mb-2">$750,000.03</p>
+            <p class="text-md font-medium text-gray-300">Account Owner: Wayne D Allen</p>
+            <p class="text-md font-medium text-gray-300">Account Number: 0896283891</p>
         </div>
-        <div class="segment cursor-pointer" onclick="showError()">
-            <div class="segment-text">Withdraw</div>
+        
+        <!-- Actions (buttons) -->
+        <div class="space-y-4">
+            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
+                Transfer
+            </button>
+            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
+                Withdraw
+            </button>
+            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
+                Cash Out
+            </button>
+            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
+                Donation
+            </button>
+            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
+                Refer & Earn
+            </button>
+            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
+                Safe Box
+            </button>
+            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
+                TV Subscription
+            </button>
+            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
+                Apply for Card
+            </button>
+            <button class="w-full action-btn text-gray-900 py-3 rounded-lg font-bold uppercase tracking-wider shadow-lg">
+                Loan
+            </button>
         </div>
-        <div class="segment cursor-pointer" onclick="showError()">
-            <div class="segment-text">Cash Out</div>
-        </div>
-        <div class="segment cursor-pointer" onclick="showError()">
-            <div class="segment-text">Donation</div>
-        </div>
-        <div class="segment cursor-pointer" onclick="showError()">
-            <div class="segment-text">Refer & Earn</div>
-        </div>
-        <div class="segment cursor-pointer" onclick="showError()">
-            <div class="segment-text">Safe Box</div>
-        </div>
-        <div class="segment cursor-pointer" onclick="showError()">
-            <div class="segment-text">TV Subscription</div>
-        </div>
-        <div class="segment cursor-pointer" onclick="showError()">
-            <div class="segment-text">Apply for Card</div>
-        </div>
-        <div class="segment cursor-pointer" onclick="showError()">
-            <div class="segment-text">Loan</div>
+
+        <!-- Transactions History -->
+        <div class="mt-8">
+            <h3 class="text-xl font-semibold text-center">Transaction History</h3>
+            <table class="w-full mt-4">
+                <thead>
+                    <tr>
+                        <th class="text-left">Transaction ID</th>
+                        <th class="text-left">Date</th>
+                        <th class="text-left">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Transaction rows -->
+                    <tr><td>TX12345678</td><td>2025-03-05 12:34:56</td><td>$1,000.00</td></tr>
+                    <tr><td>TX12345679</td><td>2025-03-04 11:22:30</td><td>$500.00</td></tr>
+                    <tr><td>TX12345680</td><td>2025-03-03 10:13:15</td><td>$2,000.00</td></tr>
+                    <tr><td>TX12345681</td><td>2025-03-02 09:45:00</td><td>$300.00</td></tr>
+                    <tr><td>TX12345682</td><td>2025-03-01 08:30:40</td><td>$750.00</td></tr>
+                    <tr><td>TX12345683</td><td>2025-02-28 07:20:55</td><td>$1,500.00</td></tr>
+                    <tr><td>TX12345684</td><td>2025-02-27 06:10:20</td><td>$450.00</td></tr>
+                    <tr><td>TX12345685</td><td>2025-02-26 05:00:10</td><td>$700.00</td></tr>
+                    <tr><td>TX12345686</td><td>2025-02-25 03:50:45</td><td>$350.00</td></tr>
+                    <tr><td>TX12345687</td><td>2025-02-24 02:40:35</td><td>$600.00</td></tr>
+                    <tr><td>TX12345688</td><td>2025-02-23 01:30:25</td><td>$1,200.00</td></tr>
+                    <tr><td>TX12345689</td><td>2025-02-22 00:20:15</td><td>$450.00</td></tr>
+                    <tr><td>TX12345690</td><td>2025-02-21 23:10:05</td><td>$350.00</td></tr>
+                    <tr><td>TX12345691</td><td>2025-02-20 22:00:00</td><td>$900.00</td></tr>
+                    <tr><td>TX12345692</td><td>2025-02-19 21:50:45</td><td>$1,000.00</td></tr>
+                    <tr><td>TX12345693</td><td>2025-02-18 20:40:35</td><td>$200.00</td></tr>
+                    <tr><td>TX12345694</td><td>2025-02-17 19:30:25</td><td>$650.00</td></tr>
+                    <tr><td>TX12345695</td><td>2025-02-16 18:20:15</td><td>$1,500.00</td></tr>
+                    <tr><td>TX12345696</td><td>2025-02-15 17:10:05</td><td>$500.00</td></tr>
+                    <tr><td>TX12345697</td><td>2025-02-14 16:00:00</td><td>$700.00</td></tr>
+                </tbody>
+            </table>
+            <div class="text-center mt-4">
+                <button class="action-btn py-2 px-6 text-gray-900 rounded-full">Past Transactions</button>
+            </div>
         </div>
     </div>
-
-    <!-- Transaction History -->
-    <div class="transaction-history text-white fade-in">
-        <h3 class="text-xl font-bold text-yellow-400 mb-4">Transaction History</h3>
-        <!-- Real-time transactions (20 lines) -->
-        <div class="transaction-item">
-            <div class="transaction-id">TXN1234567890</div>
-            <div class="transaction-date">March 5, 2025 - 09:34 AM</div>
-            <div class="transaction-amount">+$500.00</div>
-        </div>
-        <div class="transaction-item">
-            <div class="transaction-id">TXN1234567891</div>
-            <div class="transaction-date">March 4, 2025 - 04:12 PM</div>
-            <div class="transaction-amount">-$250.00</div>
-        </div>
-        <div class="transaction-item">
-            <div class="transaction-id">TXN1234567892</div>
-            <div class="transaction-date">March 3, 2025 - 01:30 PM</div>
-            <div class="transaction-amount">+$2,000.00</div>
-        </div>
-        <div class="transaction-item">
-            <div class="transaction-id">TXN1234567893</div>
-            <div class="transaction-date">March 2, 2025 - 10:47 AM</div>
-            <div class="transaction-amount">-$100.00</div>
-        </div>
-        <div class="transaction-item">
-            <div class="transaction-id">TXN1234567894</div>
-            <div class="transaction-date">March 1, 2025 - 11:15 AM</div>
-            <div class="transaction-amount">+$1,000.00</div>
-        </div>
-        <!-- Repeat the above blocks for 20 transactions -->
-    </div>
-
-    <!-- Past Transactions Button -->
-    <button class="past-transactions-btn">Past Transactions</button>
 
     <!-- Error Popup -->
-    <div id="errorPopup" class="error-popup">
-        <div class="error-message">This action cannot be processed</div>
-        <div class="error-details">Please contact your bank for further assistance.</div>
-        <button class="close-btn" onclick="closeError()">Close</button>
-    </div>
-
-    <!-- Script for Error Popup -->
-    <script>
-        function showError() {
-            document.getElementById('errorPopup').style.opacity = '1';
-            document.getElementById('errorPopup').style.pointerEvents = 'all';
-        }
-
-        function closeError() {
-            document.getElementById('errorPopup').style.opacity = '0';
-            document.getElementById('errorPopup').style.pointerEvents = 'none';
-        }
-    </script>
-</body>
-</html>
+    <div id="errorPopup">
+        <div class="error-box">
+            <h2>This action cannot be processed</h2>
+            <p>Please contact your bank for further assistance.</p>
+    
