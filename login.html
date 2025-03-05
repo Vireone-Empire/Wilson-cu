@@ -89,6 +89,70 @@
         </div>
     </section>
 
+    <!-- Services Section -->
+    <section class="section container">
+        <h2 class="text-3xl font-bold text-center mb-6">Our Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">Online Banking</h3>
+                <p>Manage your finances anytime, anywhere with our secure online banking platform.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">Personal Loans</h3>
+                <p>Flexible loan options to help you achieve your financial goals.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">Savings & Investments</h3>
+                <p>Grow your wealth with our high-yield savings and investment options.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banking Features -->
+    <section class="section bg-gray-100">
+        <h2 class="text-3xl font-bold text-center mb-6">Why Bank With Us?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 container">
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">Advanced Security</h3>
+                <p>We use the latest encryption and security measures to protect your data.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">24/7 Customer Support</h3>
+                <p>Our dedicated support team is always available to assist you.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">Fast Transactions</h3>
+                <p>Experience seamless and quick transactions anytime.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">No Hidden Fees</h3>
+                <p>Transparent pricing with no surprises.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financial Education -->
+    <section class="section container">
+        <h2 class="text-3xl font-bold text-center mb-6">Financial Education</h2>
+        <p class="text-lg text-center max-w-3xl mx-auto mb-6">
+            Empower yourself with financial knowledge. Explore our educational resources to make informed decisions.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">Budgeting Basics</h3>
+                <p>Learn how to manage your income and expenses effectively.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">Credit Score Tips</h3>
+                <p>Understand how to build and maintain a strong credit score.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <h3 class="text-xl font-semibold mb-2">Investment Strategies</h3>
+                <p>Discover smart ways to grow your money for the future.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Dark Overlay -->
     <div class="overlay" id="overlay" onclick="closeLogin()"></div>
 
@@ -98,41 +162,47 @@
             <button onclick="closeLogin()" class="text-red-500 text-lg font-bold">&times;</button>
         </div>
         <h2 class="text-2xl font-bold mb-4 text-center">Login to Your Account</h2>
-        <form class="space-y-5" onsubmit="return loginUser()">
+        <form class="space-y-5">
             <div>
                 <label class="block text-sm font-semibold mb-1">USER ID</label>
-                <input type="text" id="userId" class="w-full px-4 py-3 border rounded-lg" placeholder="Enter User ID" required>
+                <input type="text" class="w-full px-4 py-3 border rounded-lg" placeholder="Enter User ID">
             </div>
             
             <div>
                 <label class="block text-sm font-semibold mb-1">PASSWORD</label>
-                <input type="password" id="password" class="w-full px-4 py-3 border rounded-lg" placeholder="Enter Password" required>
+                <input type="password" class="w-full px-4 py-3 border rounded-lg" placeholder="Enter Password">
             </div>
 
-            <button type="submit" class="w-full btn-primary py-3 rounded-lg font-bold uppercase tracking-wider">
-                LOG IN
-            </button>
+            <button type="button" onclick="loginUser()" class="w-full btn-primary py-3 rounded-lg font-bold uppercase tracking-wider">
+    LOG IN
+</button>
         </form>
     </div>
 
     <!-- JavaScript -->
-    <script>
-        function openLogin() {
-            document.getElementById("loginBox").style.display = "block";
-            document.getElementById("overlay").style.display = "block";
-        }
+<script>
+    function openLogin() {
+        document.getElementById("loginBox").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    }
 
-        function closeLogin() {
-            document.getElementById("loginBox").style.display = "none";
-            document.getElementById("overlay").style.display = "none";
-        }
+    function closeLogin() {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    }
 
-        function loginUser() {
-            // For now, just redirect to dashboard
-            window.location.href = "dashboard.html";
-            return false; // Prevent actual form submission
+    // New Login Function (Added Before </script>)
+    function loginUser() {
+        let userId = document.querySelector('input[type="text"]').value;
+        let password = document.querySelector('input[type="password"]').value;
+
+        if (userId && password) {
+            window.location.href = "dashboard.html"; 
+        } else {
+            alert("Please enter a valid User ID and Password.");
         }
-    </script>
+    }
+</script>
 
 </body>
 </html>
