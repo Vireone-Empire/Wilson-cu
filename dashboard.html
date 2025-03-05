@@ -13,7 +13,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
         
         body {
-            background: linear-gradient(to right, #8B8000, #FFD700);
+            background: linear-gradient(to right, #003366, #006699); /* Professional blue gradient */
             font-family: 'Montserrat', sans-serif;
             color: white;
         }
@@ -104,6 +104,23 @@
             font-size: 1rem;
             font-weight: 700;
             color: #FFD700;
+        }
+
+        .past-transactions-btn {
+            margin-top: 20px;
+            background-color: #004d7a;
+            border: none;
+            padding: 12px 24px;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .past-transactions-btn:hover {
+            background-color: #005b85;
         }
 
         .error-popup {
@@ -227,6 +244,9 @@
         </div>
         <!-- Repeat the above blocks for 20 transactions -->
     </div>
+
+    <!-- Past Transactions Button -->
+    <button class="past-transactions-btn">Past Transactions</button>
 
     <!-- Error Popup -->
     <div id="errorPopup" class="error-popup">
